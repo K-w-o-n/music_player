@@ -1,0 +1,63 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+h1 {
+    color: azure;
+    
+}
+
+body {
+    background-image: url(../../Desktop/downloads/exe.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+}
+.trackItem {
+    color: yellow;
+    border-bottom: 1px solid greenyellow;
+    font-size: 20px;
+    padding: 10px 0;
+    cursor: pointer;
+    user-select: none;
+}
+
+.playListContainer {
+    margin-bottom: 20px;
+}
+
+.currentAndTotalTime {
+    color: #fff;
+}
+#progressBar {
+    width: 500px;
+    height: 5px;
+    background-color: #fff;
+}
+#currentProgress {
+    height: 100%;
+    width: 0px;
+    background-color: orangered;
+}
+.controls {
+    font-size: 30px;
+    color: #fff;
+    margin: 20px 40px;
+    cursor: pointer;
+}
+.musicPlayer {
+    display: flex;
+    flex-direction: row;
+}
+.pauseButton {
+    display: none;
+}
