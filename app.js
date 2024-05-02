@@ -4,6 +4,10 @@ const currentTimeAndTotalTimeTag = document.getElementsByClassName(
   "currentAndTotalTime"
 )[0];
 const currentProgressTag = document.getElementById("currentProgress");
+const playButtonTag = document.getElementsByClassName("playButton")[0];
+const pauseButtonTag = document.getElementsByClassName("pauseButton")[0];
+const previousButtonTag = document.getElementsByClassName("previousButton")[0];
+const nextButtonTag = document.getElementsByClassName("nextButton")[0];
   
 
 const tracks = [
@@ -17,9 +21,8 @@ const tracks = [
 for (let i = 0; i < tracks.length; i++) {
   const trackTag = document.createElement("div");
   trackTag.addEventListener("click", () => {
-    let musicSrc = tracks[i].trackId;
-    audioTag.src = musicSrc;
-    audioTag.play();
+    currentPlayingIndex = i;
+    playSong();
 
   })
   trackTag.classList.add("trackItem");
@@ -62,5 +65,57 @@ const createMinuteAndSecondText = (totalSecond) => {
   return minutesText + ":" + secondsText;
 }
 
+let currentPlayingIndex = 0;
+let isPlaying = false;
+playButtonTag.addEventListener("click", () => {
+  const currentTime = Math.floor(audioTag.currentTime);
+        isPlaying = true;
+  if(currentTime === 0) {
+    playSong();
+  } else {
+    audioTag.play();
+    updatePlayAndPauseButton();
+  }
 
+})
+
+pauseButtonTag.addEventListener("click", () => {
+  isPlaying = false;
+  audioTag.pause();
+  updatePlayAndPauseButton();
+})
+
+previousButtonTag.addEventListener("click", () => {
+  if(currentPlayingIndex === 0) {
+    return;
+  }
+   currentPlayingIndex -= 1;
+   playSong();
+})
+nextButtonTag.addEventListener("click", () => {
+  if(currentPlayingIndex === tracks.length - 1) {
+    return;
+  }
+  currentPlayingIndex += 1;
+  playSong();
+})
+
+const playSong = () => {
+     const songIdToplay = tracks[currentPlayingIndex].trackId;
+     audioTag.src = songIdToplay;
+     audioTag.play();
+     isPlaying = true;
+     updatePlayAndPauseButton();
+}
+
+let updatePlayAndPauseButton = () => {
+  
+  if(isPlaying) {
+    playButtonTag.style.display = "none";
+    pauseButtonTag.style.display = "inline";
+  } else {
+    playButtonTag.style.display = "inline";
+    pauseButtonTag.style.display = "none";
+  }
+}
 

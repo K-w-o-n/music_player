@@ -5,13 +5,13 @@
 }
 h1 {
     color: azure;
-    
 }
 
 body {
-    background-image: url(../../Desktop/downloads/exe.jpg);
+    background-image: url(images/download\ \(9\).jfif);
     background-position: center;
     background-repeat: no-repeat;
+    background-size: cover;
 
 }
 .container {
@@ -61,3 +61,10 @@ body {
 .pauseButton {
     display: none;
 }
+.footer {
+    color: chartreuse;
+}
+.header {
+    color: #FE7C00;
+}
+
